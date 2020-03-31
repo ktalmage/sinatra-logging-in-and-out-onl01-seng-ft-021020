@@ -15,7 +15,11 @@ ActiveRecord::Schema.define(version: 20200327134913) do
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "password"
+<<<<<<< HEAD
     t.integer "balance"
+=======
+    t.decimal "balance"
+>>>>>>> 056e3d236ac2418ca4a9323640d200bea83d98cc
   end
 
 end

@@ -10,6 +10,7 @@ class ApplicationController < Sinatra::Base
     erb :index
   end
 
+<<<<<<< HEAD
    post '/login' do
     user = User.find_by(username: params["username"], password: params["password"])
     if user
@@ -18,9 +19,25 @@ class ApplicationController < Sinatra::Base
     else
       erb :error
     end
+=======
+  get '/login' do
+    erb :index
+    redirect "/"
   end
+  
+  post '/login' do
+    @user = User.find_by(email: params[:email], password: params[:password])
+    if @user
+      session[:user_id] = @user.id
+      redirect '/users/home'
+    end
+    redirect '/login'
+>>>>>>> 056e3d236ac2418ca4a9323640d200bea83d98cc
+  end
+    
 
   get '/account' do
+<<<<<<< HEAD
     
     erb:account
   
@@ -32,4 +49,19 @@ class ApplicationController < Sinatra::Base
   end
 
 end
+=======
+    if Helpers.is_logged_in? 
+      erb :account
+    else
+       redirect '/'
+    end
+  end 
+
+
+end
+  # get '/logout' do
+
+  # end
+
+>>>>>>> 056e3d236ac2418ca4a9323640d200bea83d98cc
 
